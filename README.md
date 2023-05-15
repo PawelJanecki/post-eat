@@ -44,19 +44,10 @@ Use the package manager [npm] to install post-eat.
 npm install
 ```
 
-## Usage
+## Usage in develop mode
 
-```python
-import foobar
-
-# returns 'words'
-foobar.pluralize('word')
-
-# returns 'geese'
-foobar.pluralize('goose')
-
-# returns 'phenomenon'
-foobar.singularize('phenomena')
+```
+npm start
 ```
 
 ## Develop branch
