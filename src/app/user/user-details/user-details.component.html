@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col p-4 text-center">
+      <div class="img-container">
+        <img class="avatar" src="{{ (currentUser$ | async)?.photoURL }}" width="80rem" />
+        <button class="edit-btn" mat-icon-button color="warn" (click)="editAvatar()">
+          <fa-icon icon="pencil"></fa-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col text-center">
+      <h6 class="m-0">{{ (currentUser$ | async)?.displayName }}</h6>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col text-center">
+      <p class="m-0">
+        <small>{{ (currentUser$ | async)?.email }}</small>
+      </p>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,8 @@
+// @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
+@use 'sass:map';
 @use '@angular/material' as mat;
 // Plus imports for other components in your app.
 
@@ -8,39 +11,154 @@
 // Be sure that you only ever include this mixin once!
 @include mat.core();
 
+$yellow-palette: (
+  50: #fffae2,
+  100: #fff2b6,
+  200: #ffea85,
+  300: #ffe254,
+  400: #ffdb2f,
+  500: #ffd50a,
+  600: #ffd009,
+  700: #ffca07,
+  800: #ffc405,
+  900: #ffba03,
+  A100: #ffffff,
+  A200: #fffbf2,
+  A400: #ffebbf,
+  A700: #ffe4a6,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #000000,
+    600: #000000,
+    700: #000000,
+    800: #000000,
+    900: #000000,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+$blue-palette: (
+  50: #eff7f9,
+  100: #d8ecf1,
+  200: #bee0e8,
+  300: #a3d3df,
+  400: #90c9d8,
+  500: #7cc0d1,
+  600: #74bacc,
+  700: #69b2c6,
+  800: #5faac0,
+  900: #4c9cb5,
+  A100: #ffffff,
+  A200: #def7ff,
+  A400: #abebff,
+  A700: #91e4ff,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #000000,
+    600: #000000,
+    700: #000000,
+    800: #000000,
+    900: #000000,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+$orange-palette: (
+  50: #fff3e0,
+  100: #ffe0b3,
+  200: #ffcc80,
+  300: #ffb74d,
+  400: #ffa726,
+  500: #ff9800,
+  600: #ff9000,
+  700: #ff8500,
+  800: #ff7b00,
+  900: #ff6a00,
+  A100: #ffffff,
+  A200: #fff7f2,
+  A400: #ffd6bf,
+  A700: #ffc5a6,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #000000,
+    600: #000000,
+    700: #000000,
+    800: #000000,
+    900: #000000,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$post-eat-primary: mat.define-palette(mat.$indigo-palette);
-$post-eat-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$post-eat-primary: mat.define-palette($yellow-palette);
+$post-eat-accent: mat.define-palette($blue-palette, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
-$post-eat-warn: mat.define-palette(mat.$red-palette);
+$post-eat-warn: mat.define-palette($orange-palette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$post-eat-theme: mat.define-light-theme(
+$post-eat-light-theme: mat.define-light-theme(
   (
     color: (
       primary: $post-eat-primary,
       accent: $post-eat-accent,
-      warn: $post-eat-warn
-    )
+      warn: $post-eat-warn,
+    ),
+  )
+);
+
+$post-eat-dark-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: $post-eat-primary,
+      accent: $post-eat-accent,
+      warn: $post-eat-warn,
+    ),
   )
 );
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include mat.all-component-themes($post-eat-theme);
+@include mat.all-component-themes($post-eat-light-theme);
 
+.darkMode {
+  @include mat.all-component-themes($post-eat-dark-theme);
+}
 /* You can add global styles to this file, and also import other style files */
+$color-config: mat.get-color-config($post-eat-light-theme);
+$primary-color: mat.get-color-from-palette($color-config, 'primary');
 
 html,
 body {
   height: 100%;
 }
+
 body {
   margin: 0;
-  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  font-family: 'Quicksand', sans-serif;
 }

@@ -1,0 +1,16 @@
+.avatar {
+  border-radius: 20%;
+}
+
+.img-container {
+  position: relative;
+  width: fit-content;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.edit-btn {
+  position: absolute;
+  bottom: 0;
+  right: -40px;
+}

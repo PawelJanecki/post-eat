@@ -1,0 +1,33 @@
+<section class="dialog-container">
+  <div mat-dialog-content style="height: 100%">
+    <div style="width: 100%; height: calc(100% - 40px)" *ngIf="!croppedImage">
+      <div class="add-photo-btn" (click)="fileUploadInput.click()">
+        <div class="btn-content">
+          <fa-icon style="font-size: 40px" icon="upload"></fa-icon>
+          <h3>Dodaj zdjęcie</h3>
+        </div>
+      </div>
+    </div>
+
+    <input type="file" (change)="fileChangeEvent($event)" style="display: none" #fileUploadInput />
+
+    <image-cropper
+      style="visibility: hidden"
+      [imageChangedEvent]="imageChangedEvent"
+      [maintainAspectRatio]="true"
+      [aspectRatio]="1 / 1"
+      [resizeToWidth]="128"
+      format="png"
+      (imageCropped)="imageCropped($event)"
+      (imageLoaded)="imageLoaded()"
+      (cropperReady)="cropperReady()"
+      (loadImageFailed)="loadImageFailed()"></image-cropper>
+  </div>
+
+  <div mat-dialog-actions align="end">
+    <button mat-raised-button color="secondary" (click)="close()">Anuluj</button>
+    <button mat-raised-button color="primary" (click)="uploadCroppedImage()" *ngIf="!!croppedImage">
+      Dodaj
+    </button>
+  </div>
+</section>

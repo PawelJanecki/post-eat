@@ -1,1 +1,8 @@
-{{ title }} - hello world!!!
+<div style="height: 100%" [ngClass]="{ darkMode: darkMode }">
+  <app-navigation *ngIf="!!(isLoggedIn$ | async)" (modeEvent)="modeChanged($event)">
+    <!-- <p class="center">Coming soon!</p> -->
+    <router-outlet></router-outlet>
+  </app-navigation>
+
+  <app-login *ngIf="!(isLoggedIn$ | async)"></app-login>
+</div>

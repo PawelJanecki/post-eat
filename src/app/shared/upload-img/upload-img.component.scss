@@ -1,0 +1,37 @@
+@import '../../../styles.scss';
+
+.add-photo-btn {
+  border: 3px dashed var(--bs-warning);
+  border-radius: 5%;
+  width: 200px;
+  height: 200px;
+
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  cursor: pointer;
+}
+
+.btn-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+  height: auto;
+  text-align: center;
+}
+
+::ng-deep .mat-dialog-container {
+  display: flex;
+}
+.dialog-container {
+  height: 100%;
+  display: grid;
+  flex-direction: column;
+}
+.dialog-container .mat-dialog-content {
+  flex-grow: 1;
+}

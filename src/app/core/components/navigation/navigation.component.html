@@ -1,0 +1,92 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false">
+    <div class="grid">
+      <div class="profile-container container">
+        <div class="row">
+          <div class="col p-4">
+            <img class="avatar" src="{{ (currentUser$ | async)?.photoURL }}" width="80rem" />
+          </div>
+          <div class="col p-4 text-end">
+            <button
+              type="button"
+              aria-label="Toggle sidenav"
+              mat-icon-button
+              (click)="redirectToUser()">
+              <fa-icon icon="gear" style="font-size: 24px"></fa-icon>
+            </button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <h6 class="m-0">{{ (currentUser$ | async)?.displayName }}</h6>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <p class="m-0">
+              <small>{{ (currentUser$ | async)?.email }}</small>
+            </p>
+          </div>
+        </div>
+
+        <mat-divider class="my-4"></mat-divider>
+      </div>
+
+      <div class="menu-container">
+        <mat-nav-list>
+          <a mat-list-item (click)="navigateToRecipes()">Przepisy</a>
+          <a mat-list-item (click)="navigateToInspirations()">Inspiracje</a>
+        </mat-nav-list>
+      </div>
+
+      <div class="footer-container container">
+        <mat-divider class="my-4"></mat-divider>
+
+        <div class="row">
+          <div class="col">
+            <ng-container *ngIf="darkMode">
+              <button type="button" mat-icon-button (click)="changeMode(false)">
+                <fa-icon icon="lightbulb" style="font-size: 20px"></fa-icon>
+              </button>
+            </ng-container>
+            <ng-container *ngIf="!darkMode">
+              <button type="button" mat-icon-button (click)="changeMode(true)">
+                <fa-icon icon="moon" style="font-size: 20px"></fa-icon>
+              </button>
+            </ng-container>
+          </div>
+          <div class="col" style="text-align: right">
+            <button type="button" mat-icon-button (click)="logout()">
+              <fa-icon icon="power-off" style="font-size: 20px"></fa-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar class="toolbar" *ngIf="!(isWeb$ | async)">
+      <div class="menu-button">
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()"
+          *ngIf="isHandset$ | async">
+          <fa-icon icon="bars" style="font-size: 24px"></fa-icon>
+        </button>
+      </div>
+      <div class="top-logo-bar">
+        <img src="assets/images/logo1.png" width="35rem" />
+      </div>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>
