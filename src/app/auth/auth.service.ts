@@ -33,9 +33,10 @@ export class AuthService {
 
         const userFromDb = await this.userService.getUser(user?.uid!);
         userFromDb.valueChanges().subscribe(res => this.dispatchUpdate(res));
+        const userFromDbValue = <User>(await userFromDb.query.get()).toJSON();
 
-        if (!!userFromDb) {
-          this.dispatchLoginExistingUser(<User>(await userFromDb.query.get()).toJSON());
+        if (!!userFromDbValue) {
+          this.dispatchLoginExistingUser(userFromDbValue);
         } else {
           const newUser: User = {
             uid: user?.uid!,
@@ -81,7 +82,6 @@ export class AuthService {
   }
 
   dispatchUpdate(user: User) {
-    console.log('asdas');
     this.store.dispatch(
       AuthActions.update({
         user: {
