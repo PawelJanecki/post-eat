@@ -15,6 +15,7 @@ Implemented features:
 
 Todo features(order is important):
 - improve auth store (actions, reducers and effects)
+- add auth guard
 - add PWA
 - inspiration: 
   - model + database model
@@ -43,19 +44,10 @@ Use the package manager [npm] to install post-eat.
 npm install
 ```
 
-## Usage
+## Usage in develop mode
 
-```python
-import foobar
-
-# returns 'words'
-foobar.pluralize('word')
-
-# returns 'geese'
-foobar.pluralize('goose')
-
-# returns 'phenomenon'
-foobar.singularize('phenomena')
+```
+npm start
 ```
 
 ## Develop branch
