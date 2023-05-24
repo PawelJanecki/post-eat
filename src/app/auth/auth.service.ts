@@ -6,7 +6,7 @@ import { AuthState } from './auth.reducers';
 import { Store } from '@ngrx/store';
 import { AuthActions } from './action-types';
 import { User } from './model/user.model';
-import { UserService } from '../user/user.service';
+import { UserService } from '../user/service/user.service';
 
 @Injectable({
   providedIn: 'root',

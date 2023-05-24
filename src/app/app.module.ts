@@ -6,7 +6,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { LayoutModule } from '@angular/cdk/layout';
 import { CoreModule } from './core/core.module';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
@@ -17,6 +16,7 @@ import { StoreModule } from '@ngrx/store';
 import { metaReducers, reducers } from './app.reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
+import { RecipeService } from './recipe/service/recipe.service';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCi7LpsIn7r7PuzYe--sP3qVf2j_hjrbnU',
@@ -32,7 +32,7 @@ const firebaseConfig = {
 const routes: Routes = [
   {
     path: 'recipes',
-    loadChildren: () => import('./recipes/recipes.module').then(module => module.RecipesModule),
+    loadChildren: () => import('./recipe/recipe.module').then(module => module.RecipeModule),
     canActivate: [],
   },
   {
@@ -73,7 +73,6 @@ const routes: Routes = [
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     EffectsModule.forRoot([]),
   ],
-  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

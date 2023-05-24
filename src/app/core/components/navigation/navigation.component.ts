@@ -56,8 +56,8 @@ export class NavigationComponent {
   }
 
   navigateToRecipes() {
-    alert('TODO: podstrona z gotowymi przepisami');
-    // this.router.navigate(['recipes']);
+    // alert('TODO: podstrona z gotowymi przepisami');
+    this.router.navigate(['recipes']);
   }
 
   navigateToInspirations() {

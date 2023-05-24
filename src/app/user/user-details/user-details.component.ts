@@ -9,7 +9,7 @@ import { User } from 'src/app/auth/model/user.model';
 import { AuthSelectors } from 'src/app/auth/selector-types';
 import { StorageService } from 'src/app/core/services/storage.service';
 import { UploadImgComponent } from 'src/app/shared/upload-img/upload-img.component';
-import { UserService } from '../user.service';
+import { UserService } from '../service/user.service';
 
 @Component({
   selector: 'app-user-details',
